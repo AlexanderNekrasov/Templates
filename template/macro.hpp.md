@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: graph/vertex-cover-small-ans.hpp
+    title: graph/vertex-cover-small-ans.hpp
+  - icon: ':warning:'
+    path: graph/vertex-cover.hpp
+    title: graph/vertex-cover.hpp
   - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
@@ -23,9 +29,6 @@ data:
   bundledCode: '#line 2 "template/macro.hpp"
 
 
-    #include <bits/stdc++.h>
-
-
     #define all(v) (v).begin(),(v).end()
 
     #define rall(v) (v).rbegin(),(v).rend()
@@ -34,9 +37,6 @@ data:
 
     '
   code: '#pragma once
-
-
-    #include <bits/stdc++.h>
 
 
     #define all(v) (v).begin(),(v).end()
@@ -50,13 +50,15 @@ data:
   isVerificationFile: false
   path: template/macro.hpp
   requiredBy:
-  - template/template.hpp
+  - graph/vertex-cover.hpp
+  - graph/vertex-cover-small-ans.hpp
   - template/util.hpp
-  timestamp: '2022-06-21 08:42:58+03:00'
+  - template/template.hpp
+  timestamp: '2022-07-12 17:31:52+03:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/yosupo/Sample/many_aplusb.test.cpp
   - verify/yosupo/Sample/aplusb.test.cpp
+  - verify/yosupo/Sample/many_aplusb.test.cpp
 documentation_of: template/macro.hpp
 layout: document
 redirect_from:
