@@ -8,6 +8,9 @@ data:
   - icon: ':warning:'
     path: graph/vertex-cover.hpp
     title: graph/vertex-cover.hpp
+  - icon: ':warning:'
+    path: template/main.cpp
+    title: template/main.cpp
   - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
@@ -52,13 +55,14 @@ data:
   requiredBy:
   - graph/vertex-cover.hpp
   - graph/vertex-cover-small-ans.hpp
-  - template/util.hpp
   - template/template.hpp
+  - template/util.hpp
+  - template/main.cpp
   timestamp: '2022-07-12 17:31:52+03:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/yosupo/Sample/aplusb.test.cpp
   - verify/yosupo/Sample/many_aplusb.test.cpp
+  - verify/yosupo/Sample/aplusb.test.cpp
 documentation_of: template/macro.hpp
 layout: document
 redirect_from:

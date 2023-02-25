@@ -40,8 +40,8 @@ data:
   requiredBy:
   - graph/vertex-cover.hpp
   - graph/maximum-independent-set.hpp
-  - graph/graph-utils.hpp
   - graph/vertex-cover-small-ans.hpp
+  - graph/graph-utils.hpp
   timestamp: '2022-07-12 17:31:52+03:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

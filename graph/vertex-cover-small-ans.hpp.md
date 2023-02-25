@@ -122,30 +122,32 @@ data:
     \     return used;\n    }\n};\n#line 2 \"template/macro.hpp\"\n\n#define all(v)\
     \ (v).begin(),(v).end()\n#define rall(v) (v).rbegin(),(v).rend()\n#define sz(v)\
     \ (int((v).size()))\n#line 3 \"template/util.hpp\"\n#include <vector>\n#include\
-    \ <algorithm>\n\ntemplate<typename T>\nvoid unq(std::vector<T> &arr) {\n    sort(all(arr));\n\
-    \    arr.erase(unique(all(arr)), arr.end());\n}\n#line 2 \"graph/vertex-cover.hpp\"\
-    \n\n#line 2 \"graph/maximum-independent-set.hpp\"\n\n#line 4 \"graph/maximum-independent-set.hpp\"\
-    \n\nvector<int> maximumIndependentSet(const UnweightedGraph &g) {\n    assert(sz(g)\
-    \ <= 64);\n    int n = sz(g);\n    vector<ull> gb(n, 0);\n    for (int i = 0;\
-    \ i < n; i++) {\n        for (int j : g[i]) {\n            gb[i] |= 1ULL << j;\n\
-    \        }\n        gb[i] |= 1ULL << i;\n        gb[i] ^= ULLONG_MAX;\n    }\n\
-    \    int k = (n + 1) / 2;\n    unordered_map<ull, ull> memo;\n    //vector<ull>\
-    \ memo(1ULL << k, ULLONG_MAX);\n    auto rec = [&](auto rec, ull mask, int bit)\
-    \ -> ull {\n        if (mask == 0)\n            return 0;\n        if (mask <\
-    \ (1ULL << k) && memo.find(mask) != memo.end()) {\n            return memo[mask];\
-    \ \n        }\n        if (mask & (1ULL << bit)) {\n            auto ans1 = rec(rec,\
-    \ mask ^ (1ULL << bit), bit - 1);\n            auto ans2 = rec(rec, mask & gb[bit],\
-    \ bit - 1) | (1ULL << bit);\n            if (__builtin_popcountll(ans1) < __builtin_popcountll(ans2))\
-    \ {\n                ans1 = ans2;\n            }\n            if (mask < (1ULL\
-    \ << k)) {\n                memo[mask] = ans1;\n            }\n            return\
-    \ ans1;\n        } else {\n            return rec(rec, mask, bit - 1);\n     \
-    \   }\n    };\n    auto ans = rec(rec, (1ULL << n) - 1, n - 1);\n    vector<int>\
-    \ ans2;\n    for (int i = 0; i < n; i++) {\n        if (ans & (1ULL << i)) {\n\
-    \            ans2.push_back(i);\n        }\n    }\n    return ans2;\n}\n#line\
-    \ 6 \"graph/vertex-cover.hpp\"\n\nvector<int> vertexCover2(const UnweightedGraph\
-    \ &g) {\n    int n = sz(g);\n    vector<int> used(n, 1);\n    auto is = maximumIndependentSet(g);\n\
-    \    for (int el : is) {\n        used[el] = 0;\n    }\n    vector<int> ans;\n\
-    \    for (int i = 0; i < n; i++)\n        if (used[i])\n            ans.push_back(i);\n\
+    \ <algorithm>\n#include <string>\n\ntemplate<typename T>\nvoid unq(std::vector<T>\
+    \ &arr) {\n    sort(all(arr));\n    arr.erase(unique(all(arr)), arr.end());\n\
+    }\nvoid unq(std::string &arr) {\n    sort(all(arr));\n    arr.erase(unique(all(arr)),\
+    \ arr.end());\n}\n#line 2 \"graph/vertex-cover.hpp\"\n\n#line 2 \"graph/maximum-independent-set.hpp\"\
+    \n\n#line 4 \"graph/maximum-independent-set.hpp\"\n\nvector<int> maximumIndependentSet(const\
+    \ UnweightedGraph &g) {\n    assert(sz(g) <= 64);\n    int n = sz(g);\n    vector<ull>\
+    \ gb(n, 0);\n    for (int i = 0; i < n; i++) {\n        for (int j : g[i]) {\n\
+    \            gb[i] |= 1ULL << j;\n        }\n        gb[i] |= 1ULL << i;\n   \
+    \     gb[i] ^= ULLONG_MAX;\n    }\n    int k = (n + 1) / 2;\n    unordered_map<ull,\
+    \ ull> memo;\n    //vector<ull> memo(1ULL << k, ULLONG_MAX);\n    auto rec = [&](auto\
+    \ rec, ull mask, int bit) -> ull {\n        if (mask == 0)\n            return\
+    \ 0;\n        if (mask < (1ULL << k) && memo.find(mask) != memo.end()) {\n   \
+    \         return memo[mask]; \n        }\n        if (mask & (1ULL << bit)) {\n\
+    \            auto ans1 = rec(rec, mask ^ (1ULL << bit), bit - 1);\n          \
+    \  auto ans2 = rec(rec, mask & gb[bit], bit - 1) | (1ULL << bit);\n          \
+    \  if (__builtin_popcountll(ans1) < __builtin_popcountll(ans2)) {\n          \
+    \      ans1 = ans2;\n            }\n            if (mask < (1ULL << k)) {\n  \
+    \              memo[mask] = ans1;\n            }\n            return ans1;\n \
+    \       } else {\n            return rec(rec, mask, bit - 1);\n        }\n   \
+    \ };\n    auto ans = rec(rec, (1ULL << n) - 1, n - 1);\n    vector<int> ans2;\n\
+    \    for (int i = 0; i < n; i++) {\n        if (ans & (1ULL << i)) {\n       \
+    \     ans2.push_back(i);\n        }\n    }\n    return ans2;\n}\n#line 6 \"graph/vertex-cover.hpp\"\
+    \n\nvector<int> vertexCover2(const UnweightedGraph &g) {\n    int n = sz(g);\n\
+    \    vector<int> used(n, 1);\n    auto is = maximumIndependentSet(g);\n    for\
+    \ (int el : is) {\n        used[el] = 0;\n    }\n    vector<int> ans;\n    for\
+    \ (int i = 0; i < n; i++)\n        if (used[i])\n            ans.push_back(i);\n\
     \    return ans;\n}\n\nvoid vertexCoverErase(vector<vector<bool>> &g, vector<int>\
     \ &vs, int u) {\n    int n = sz(g);\n    for (int i = 0; i < n; i++) {\n     \
     \   if (i != u) {\n            g[i].erase(g[i].begin() + u);\n        }\n    }\n\
@@ -257,7 +259,7 @@ data:
   isVerificationFile: false
   path: graph/vertex-cover-small-ans.hpp
   requiredBy: []
-  timestamp: '2022-07-12 17:31:52+03:00'
+  timestamp: '2023-02-25 13:28:05+03:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/vertex-cover-small-ans.hpp

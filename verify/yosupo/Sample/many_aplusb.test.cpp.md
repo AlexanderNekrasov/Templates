@@ -43,14 +43,17 @@ data:
     #include <cstring>\n#include <ctgmath>\n#include <ctime>\n#include <cwchar>\n\
     #include <cwctype>\n\n#line 2 \"template/macro.hpp\"\n\n#define all(v) (v).begin(),(v).end()\n\
     #define rall(v) (v).rbegin(),(v).rend()\n#define sz(v) (int((v).size()))\n#line\
-    \ 5 \"template/util.hpp\"\n\ntemplate<typename T>\nvoid unq(std::vector<T> &arr)\
-    \ {\n    sort(all(arr));\n    arr.erase(unique(all(arr)), arr.end());\n}\n#line\
-    \ 79 \"template/template.hpp\"\n\nusing namespace std;\n\nusing ll = long long;\n\
-    using ld = long double;\nusing ull = unsigned long long;\nusing uint = unsigned;\n\
-    \nnamespace Quark {\n    void solve();\n};\n\nint main() { Quark::solve(); }\n\
-    \n#line 3 \"verify/yosupo/Sample/many_aplusb.test.cpp\"\n\nusing namespace Quark;\n\
-    \nvoid Quark::solve() {\n    int t;\n    cin >> t;\n    while (t--) {\n      \
-    \  ll a, b;\n        cin >> a >> b;\n        cout << a + b << endl;\n    }\n}\n"
+    \ 6 \"template/util.hpp\"\n\ntemplate<typename T>\nvoid unq(std::vector<T> &arr)\
+    \ {\n    sort(all(arr));\n    arr.erase(unique(all(arr)), arr.end());\n}\nvoid\
+    \ unq(std::string &arr) {\n    sort(all(arr));\n    arr.erase(unique(all(arr)),\
+    \ arr.end());\n}\n#line 79 \"template/template.hpp\"\n\nusing namespace std;\n\
+    \nusing ll = long long;\nusing ld = long double;\nusing ull = unsigned long long;\n\
+    using uint = unsigned;\n\nnamespace Quark {\n    void solve();\n};\n\nint main()\
+    \ { \n    ios_base::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n \
+    \   Quark::solve();\n}\n\n#line 3 \"verify/yosupo/Sample/many_aplusb.test.cpp\"\
+    \n\nusing namespace Quark;\n\nvoid Quark::solve() {\n    int t;\n    cin >> t;\n\
+    \    while (t--) {\n        ll a, b;\n        cin >> a >> b;\n        cout <<\
+    \ a + b << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/many_aplusb\"\n#include\
     \ \"../../../template/template.hpp\"\n\nusing namespace Quark;\n\nvoid Quark::solve()\
     \ {\n    int t;\n    cin >> t;\n    while (t--) {\n        ll a, b;\n        cin\
@@ -62,7 +65,7 @@ data:
   isVerificationFile: true
   path: verify/yosupo/Sample/many_aplusb.test.cpp
   requiredBy: []
-  timestamp: '2022-07-12 17:31:52+03:00'
+  timestamp: '2023-02-25 13:28:05+03:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/yosupo/Sample/many_aplusb.test.cpp
