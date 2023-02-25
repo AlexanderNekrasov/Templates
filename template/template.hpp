@@ -88,5 +88,10 @@ namespace Quark {
     void solve();
 };
 
-int main() { Quark::solve(); }
+int main() { 
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    Quark::solve();
+}
 
